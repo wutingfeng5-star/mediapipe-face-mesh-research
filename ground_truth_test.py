@@ -4,12 +4,13 @@ import feature_extractor as fe
 import cv2
 import mediapipe as mp
 
+
 def main() -> None:
     mp_face_mesh = mp.solutions.face_mesh
     face_mesh = mp_face_mesh.FaceMesh(refine_landmarks=True)
     feature_extractor = fe.FeatureExtractor()
 
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(0)
     try:
         while cap.isOpened():
             ret, frame_bgr = cap.read()
@@ -46,6 +47,7 @@ def main() -> None:
         cap.release()
         face_mesh.close()
         cv2.destroyAllWindows()
+
 
 if __name__ == "__main__":
     main()
